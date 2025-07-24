@@ -5,7 +5,7 @@ const {
   getMyProfile,
   updateMyProfile,
 } = require("../controllers/userControllers");
-const { authMiddleware } = require("./middlewares/authMiddlewares");
+const { authMiddleware } = require("../middlewares/authMiddlewares");
 const userRouter = express.Router();
 
 userRouter.get("/me/cart", authMiddleware, getMyCart);
