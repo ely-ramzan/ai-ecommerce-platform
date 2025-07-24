@@ -9,14 +9,14 @@ const {
     deleteProduct
 } = require("../controllers/productControllers");
 
-const {isAdmin} = require("../middlewares/authMiddlewares");
+const {authMiddleware,isAdmin} = require("../middlewares/authMiddlewares");
 
 productRouter.get("/",getAllProducts);
 productRouter.get("/:id",getProductById);
 
 // admin protected:
-productRouter.post("/",isAdmin,createProduct);
-productRouter.put("/:id",isAdmin,updateProduct);
-productRouter.delete("/:id",isAdmin,deleteProduct);
+productRouter.post("/",authMiddleware,isAdmin,createProduct);
+productRouter.put("/:id",authMiddleware,isAdmin,updateProduct);
+productRouter.delete("/:id",authMiddleware,isAdmin,deleteProduct);
 
 module.exports = productRouter;
